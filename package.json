@@ -1,0 +1,11 @@
+{
+  "name": "simple-static-site",
+  "version": "1.0.0",
+  "description": "A simple static website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s ."
+  },
+  "author": "",
+  "license": "ISC"
+}

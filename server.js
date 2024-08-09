@@ -1,10 +1,17 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
 const bodyParser = require('body-parser');
+const path = require('path'); // Add this
 
 const app = express();
+
+// Serve static files from the "public" directory (assuming index.html is in the root)
+app.use(express.static(path.join(__dirname, 'public'))); // Adjust the path if necessary
+
+// Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Endpoint for form submission
 app.post('/process-form', async (req, res) => {
   const { firstName, lastName, middleName, suffix } = req.body;
 
@@ -27,4 +34,10 @@ app.post('/process-form', async (req, res) => {
   }
 });
 
+// Default route to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Adjust path if needed
+});
+
+// Start the server
 app.listen(process.env.PORT || 3000, () => console.log(`Server running on port ${process.env.PORT || 3000}`));

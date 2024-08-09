@@ -21,6 +21,5 @@ jobs:
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'web-form-testing'
-        slot-name: 'production'
-        package: .
+        app-name: 'web-form-testing'  # Your WebApp name
+        package: .  # The package to deploy
